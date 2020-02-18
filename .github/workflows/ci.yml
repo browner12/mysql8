@@ -16,3 +16,27 @@ jobs:
     - uses: actions/checkout@v2
     - name: Install MySQL 8
       run: sudo bash ./.github/scripts/mysql8.sh
+    - name: Create Database
+      run: mysql --user="homestead" --password="secret" -e "CREATE DATABASE testing character set UTF8mb4 collate utf8mb4_bin;"
+
+  feature:
+    name: 'Feature Tests'
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install MySQL 8
+      run: sudo bash ./.github/scripts/mysql8.sh
+    - name: Create Database
+      run: mysql --user="homestead" --password="secret" -e "CREATE DATABASE testing character set UTF8mb4 collate utf8mb4_bin;"
+
+  dusk:
+    name: 'Laravel Dusk'
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install MySQL 8
+      run: sudo bash ./.github/scripts/mysql8.sh
+    - name: Add Host
+      run: printf "127.0.0.1 culligan.test" | sudo tee -a /etc/hosts > /dev/null
+    - name: Create Database
+      run: mysql --user="homestead" --password="secret" -e "CREATE DATABASE culligan character set UTF8mb4 collate utf8mb4_bin;"
