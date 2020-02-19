@@ -12,5 +12,7 @@ jobs:
       run: sudo bash ./.github/scripts/mysql8.sh
     - name: Create Database
       run: mysql --user="homestead" --password="secret" -e "CREATE DATABASE testing character set UTF8mb4 collate utf8mb4_bin;"
-    - name: Chromium Versison
+    - name: Chromium Version
       run: chromium-browser --version
+    - name: Chrome Version
+      run: google-chrome --version
