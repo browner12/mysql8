@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+ls -al /
+
 wget -q -O - https://packages.blackfire.io/gpg.key | apt-key add -
 echo "deb http://packages.blackfire.io/debian any main" | tee /etc/apt/sources.list.d/blackfire.list
 
@@ -29,8 +31,6 @@ timeout=15s
 echo "$agent" > "/etc/blackfire/agent"
 echo "$client" > "/home/.blackfire.ini"
 
-service php5.6-fpm restart
-service php7.0-fpm restart
 service php7.1-fpm restart
 service php7.2-fpm restart
 service php7.3-fpm restart
