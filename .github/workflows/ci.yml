@@ -8,11 +8,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+    - name: Install Blackfire
+      run: sudo bash ./.github/scripts/blackfire.sh
     - name: Chrome Version
       run: google-chrome --version
     - name: Install MySQL 8
       run: sudo bash ./.github/scripts/mysql8.sh
     - name: Create Database
       run: mysql --user="homestead" --password="secret" -e "CREATE DATABASE testing character set UTF8mb4 collate utf8mb4_bin;"
-    - name: Install Blackfire
-      run: sudo bash ./.github/scripts/blackfire.sh
