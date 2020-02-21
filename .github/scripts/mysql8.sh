@@ -1,8 +1,5 @@
 #!/usr/bin/env bash
 
-ls -al /
-ls -al /run
-
 export DEBIAN_FRONTEND=noninteractive
 
 # Disable Apparmor
@@ -56,6 +53,3 @@ service mysql restart
 
 unset MYSQL_PWD
 unset DEBIAN_FRONTEND
-
-stat /usr/sbin/mysqld
-systemctl status mysql.service
